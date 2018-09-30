@@ -9,19 +9,19 @@
 <a href="https://raw.githubusercontent.com/artbobrov/ScrollKit/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
 </p>
 
-By [ ](http://artbobrov.com).
-
 ## Introduction
 
-ScrollKit is a library to .......
-
-<!-- <img src="Example/ScrollKit.gif" width="300"/> -->
+ScrollKit is a library to manage your UICollectionView and UITableView data.
+Heavily inspired by [TableKit](https://github.com/maxsokolov/TableKit.git).
 
 ## Usage
 
 ```swift
 import ScrollKit
-// ...
+
+let director = TableDirector(tableView: tableView)
+let rows = elements.map { TableRows<MyTableViewCell>(item: $0) }
+director.append(rows: rows).reload()
 ```
 
 ## Requirements
@@ -33,17 +33,10 @@ import ScrollKit
 
 * If you **want to contribute** please feel free to **submit pull requests**.
 * If you **have a feature request** please **open an issue**.
-* If you **found a bug** or **need help** please **check older issues, [FAQ](#faq) and threads on [StackOverflow](http://stackoverflow.com/questions/tagged/ScrollKit) (Tag 'ScrollKit') before submitting an issue**.
-
-Before contribute check the [CONTRIBUTING](https://github.com/artbobrov/ScrollKit/blob/master/CONTRIBUTING.md) file for more info.
-
-If you use **ScrollKit** in your app We would love to hear about it! Drop us a line on [Twitter](https://twitter.com/artbobrov).
 
 ## Examples
 
 Follow these 3 steps to run Example project: clone ScrollKit repository, open ScrollKit workspace and run the *Example* project.
-
-You can also experiment and learn with the *ScrollKit Playground* which is contained in *ScrollKit.workspace*.
 
 ## Installation
 
@@ -54,7 +47,7 @@ You can also experiment and learn with the *ScrollKit Playground* which is conta
 To install ScrollKit, simply add the following line to your Podfile:
 
 ```ruby
-pod 'ScrollKit', '~> 1.0'
+pod 'ScrollKit', '~> 0.9'
 ```
 
 ### Carthage
@@ -64,19 +57,9 @@ pod 'ScrollKit', '~> 1.0'
 To install ScrollKit, simply add the following line to your Cartfile:
 
 ```ogdl
-github "artbobrov/ScrollKit" ~> 1.0
+github "artbobrov/ScrollKit" ~> 0.9
 ```
 
 ## Author
 
-* [ ](https://github.com/artbobrov) ([@artbobrov](https://twitter.com/artbobrov))
-
-## FAQ
-
-### How to .....
-
-You can do it by conforming to .....
-
-# Changelog
-
-See [CHANGELOG](CHANGELOG.md).
+* [@artbobrov](https://github.com/artbobrov)
