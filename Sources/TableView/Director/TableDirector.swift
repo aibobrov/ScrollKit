@@ -8,12 +8,7 @@
 import Foundation
 
 open class TableDirector: NSObject {
-    public weak var tableView: UITableView? {
-        didSet {
-            tableView?.delegate = self
-            tableView?.dataSource = self
-        }
-    }
+    public weak var tableView: UITableView?
 
     public var sections: [TableSection] = []
 
@@ -22,16 +17,22 @@ open class TableDirector: NSObject {
 
     public init(tableView: UITableView, shouldUseAutomaticCellRegistration: Bool = false) {
         self.tableView = tableView
+
         if shouldUseAutomaticCellRegistration {
             registrar = TableCellRegistrar(tableView: tableView)
         }
         super.init()
 
+        tableView.delegate = self
+        tableView.dataSource = self
+
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveAction(_:)), name: .TableViewCellAction, object: nil)
     }
 
-    public func reload() {
+    @discardableResult
+    public func reload() -> Self {
         tableView?.reloadData()
+        return self
     }
 
     public subscript(indexPath: IndexPath) -> TableItemAbstract {
@@ -72,5 +73,56 @@ extension TableDirector: Collection {
         set {
             sections[position] = newValue
         }
+    }
+}
+
+extension TableDirector {
+    @discardableResult
+    open func append(section: TableSection) -> Self {
+        append(sections: [section])
+        return self
+    }
+
+    @discardableResult
+    open func append(sections: [TableSection]) -> Self {
+        self.sections.append(contentsOf: sections)
+        return self
+    }
+
+    @discardableResult
+    open func append(items: [TableItemAbstract]) -> Self {
+        append(section: TableSection(items: items))
+        return self
+    }
+
+    @discardableResult
+    open func insert(section: TableSection, at index: Int) -> Self {
+        sections.insert(section, at: index)
+        return self
+    }
+
+    @discardableResult
+    open func replaceSection(at index: Int, with section: TableSection) -> Self {
+        if index < sections.count {
+            sections[index] = section
+        }
+        return self
+    }
+
+    @discardableResult
+    open func delete(sectionAt index: Int) -> Self {
+        sections.remove(at: index)
+        return self
+    }
+
+    @discardableResult
+    open func remove(sectionAt index: Int) -> Self {
+        return delete(sectionAt: index)
+    }
+
+    @discardableResult
+    open func clear() -> Self {
+        sections.removeAll()
+        return self
     }
 }

@@ -89,6 +89,6 @@ extension CollectionDirector: UICollectionViewDelegateFlowLayout {
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return self[indexPath].invoke(action: .sizeForItem, cell: nil, indexPath: indexPath, userInfo: nil) as! CGSize? ?? (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
+        return self[indexPath].invoke(action: .sizeForItem, cell: nil, indexPath: indexPath, userInfo: nil) as! CGSize? ?? (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
     }
 }

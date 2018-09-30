@@ -8,12 +8,7 @@
 import Foundation
 
 open class CollectionDirector: NSObject {
-    public weak var collectionView: UICollectionView? {
-        didSet {
-            collectionView?.delegate = self
-            collectionView?.dataSource = self
-        }
-    }
+    public weak var collectionView: UICollectionView?
 
     public var sections: [CollectionSection] = []
 
@@ -29,11 +24,16 @@ open class CollectionDirector: NSObject {
 
         super.init()
 
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveAction(_:)), name: .CollectionViewCellAction, object: nil)
     }
 
-    public func reload() {
+    @discardableResult
+    public func reload() -> Self {
         collectionView?.reloadData()
+        return self
     }
 
     public subscript(indexPath: IndexPath) -> CollectionItemAbstract {
@@ -74,5 +74,56 @@ extension CollectionDirector: Collection {
         set {
             sections[position] = newValue
         }
+    }
+}
+
+public extension CollectionDirector {
+    @discardableResult
+    public func append(section: CollectionSection) -> Self {
+        append(sections: [section])
+        return self
+    }
+
+    @discardableResult
+    public func append(sections: [CollectionSection]) -> Self {
+        self.sections.append(contentsOf: sections)
+        return self
+    }
+
+    @discardableResult
+    public func append(items: [CollectionItemAbstract]) -> Self {
+        append(section: CollectionSection(items: items))
+        return self
+    }
+
+    @discardableResult
+    public func insert(section: CollectionSection, at index: Int) -> Self {
+        sections.insert(section, at: index)
+        return self
+    }
+
+    @discardableResult
+    public func replaceSection(at index: Int, with section: CollectionSection) -> Self {
+        if index < sections.count {
+            sections[index] = section
+        }
+        return self
+    }
+
+    @discardableResult
+    public func delete(sectionAt index: Int) -> Self {
+        sections.remove(at: index)
+        return self
+    }
+
+    @discardableResult
+    public func remove(sectionAt index: Int) -> Self {
+        return delete(sectionAt: index)
+    }
+
+    @discardableResult
+    public func clear() -> Self {
+        sections.removeAll()
+        return self
     }
 }

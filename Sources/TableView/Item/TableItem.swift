@@ -7,6 +7,10 @@
 
 import Foundation
 
+extension TableActionKey {
+    public static let canEdit = TableActionKey("TableViewCanEdit")
+}
+
 open class TableItem<CellType: Configurable>: TableItemAbstract where CellType: UITableViewCell {
     open var item: CellType.DataType
     open lazy var actions: [TableActionKey: [TableItemAction<CellType>]] = [:]
@@ -60,5 +64,12 @@ open class TableItem<CellType: Configurable>: TableItemAbstract where CellType: 
 
     open override func has(action: TableActionKey) -> Bool {
         return actions[action] != nil
+    }
+
+    open override func isEditingAllowed(for indexPath: IndexPath) -> Bool {
+        if actions[.canEdit] != nil {
+            return invoke(action: .canEdit, cell: nil, indexPath: indexPath) as? Bool ?? false
+        }
+        return editingActions?.isEmpty == false
     }
 }
