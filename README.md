@@ -12,12 +12,16 @@
 ## Introduction
 
 ScrollKit is a library to manage your UICollectionView and UITableView data.
+Heavily inspired by [TableKit](https://github.com/maxsokolov/TableKit.git).
 
 ## Usage
 
 ```swift
 import ScrollKit
-// ...
+
+let director = TableDirector(tableView: tableView)
+let rows = elements.map { TableRows<MyTableViewCell>(item: $0) }
+director.append(rows: rows).reload()
 ```
 
 ## Requirements
@@ -43,7 +47,7 @@ Follow these 3 steps to run Example project: clone ScrollKit repository, open Sc
 To install ScrollKit, simply add the following line to your Podfile:
 
 ```ruby
-pod 'ScrollKit', '~> 1.0'
+pod 'ScrollKit', '~> 0.9'
 ```
 
 ### Carthage
@@ -53,7 +57,7 @@ pod 'ScrollKit', '~> 1.0'
 To install ScrollKit, simply add the following line to your Cartfile:
 
 ```ogdl
-github "artbobrov/ScrollKit" ~> 1.0
+github "artbobrov/ScrollKit" ~> 0.9
 ```
 
 ## Author

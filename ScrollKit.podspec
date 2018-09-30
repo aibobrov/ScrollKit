@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ScrollKit"
-  s.version          = "1.0.0"
+  s.version          = "0.9"
   s.summary          = "A short description of ScrollKit."
   s.homepage         = "https://github.com/artbobrov/ScrollKit"
   s.license          = { type: 'MIT', file: 'LICENSE' }

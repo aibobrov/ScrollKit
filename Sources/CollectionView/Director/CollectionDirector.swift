@@ -7,6 +7,9 @@
 
 import Foundation
 
+/*
+	Main class responsible for collection view's delegate and data source.
+*/
 open class CollectionDirector: NSObject {
     public weak var collectionView: UICollectionView?
 

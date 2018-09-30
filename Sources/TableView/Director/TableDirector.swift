@@ -7,6 +7,9 @@
 
 import Foundation
 
+/*
+	Main class responsible for table view's delegate and data source.
+*/
 open class TableDirector: NSObject {
     public weak var tableView: UITableView?
 
