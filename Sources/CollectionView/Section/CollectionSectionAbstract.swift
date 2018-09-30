@@ -1,5 +1,5 @@
 //
-//  TableSectionAbstract.swift
+//  CollectionSectionAbstract.swift
 //  ScrollKit
 //
 //  Created by Artem Bobrov on 29/09/2018.
@@ -7,17 +7,17 @@
 
 import Foundation
 
-open class TableSectionAbstract: Section {
-    public typealias ItemType = TableItemAbstract
+open class CollectionSectionAbstract: Section {
+    public typealias ItemType = CollectionItemAbstract
 
-    open var items: [TableItemAbstract] = []
+    open var items: [CollectionItemAbstract] = []
 
-    init(items: [TableItemAbstract] = []) {
+    public init(items: [CollectionItemAbstract] = []) {
         self.items = items
     }
 }
 
-extension TableSectionAbstract: Collection {
+extension CollectionSectionAbstract: Collection {
     public typealias Index = Array<ItemType>.Index
     public typealias Element = ItemType
 

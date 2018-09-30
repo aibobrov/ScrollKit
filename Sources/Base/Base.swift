@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias ActionKey = Hashable & RawRepresentable
+
 public protocol ItemConfigurable {
     associatedtype ScrollViewCellType: UIView
 

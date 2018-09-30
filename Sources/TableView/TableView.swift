@@ -25,5 +25,5 @@ public struct TableViewUserInfoKeys: Hashable, Equatable, RawRepresentable {
 }
 
 public extension Notification.Name {
-    static let TableViewCellAction = Notification.Name(rawValue: "TableViewCellAction")
+    public static let TableViewCellAction = Notification.Name(rawValue: "TableViewCellAction")
 }

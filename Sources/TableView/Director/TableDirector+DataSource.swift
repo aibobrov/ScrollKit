@@ -7,10 +7,10 @@
 
 import UIKit
 
-extension ActionKey {
-    public static let clickDelete = ActionKey("TableViewClickDelete")
-    public static let canMove = ActionKey("TableViewCanMove")
-    public static let moveRow = ActionKey("TableViewMoveRow")
+extension TableActionKey {
+    public static let clickDelete = TableActionKey("TableViewClickDelete")
+    public static let canMove = TableActionKey("TableViewCanMove")
+    public static let moveRow = TableActionKey("TableViewMoveRow")
 }
 
 extension TableViewUserInfoKeys {

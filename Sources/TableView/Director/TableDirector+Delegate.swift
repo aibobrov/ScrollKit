@@ -7,31 +7,31 @@
 
 import Foundation
 
-public extension ActionKey {
-    public static let didSelectRow = ActionKey("TableViewDidSelected")
-    public static let didDeselectRow = ActionKey("TableViewDidDeselected")
-    public static let didHighlightRow = ActionKey("TableViewDidHightlight")
-    public static let didUnhighlightRow = ActionKey("TableViewDidUnhightlight")
-    public static let willDisplayCell = ActionKey("TableViewWillDisplayCell")
-    public static let didEndDisplayingCell = ActionKey("TableViewDidendDisplayingCell")
-    public static let shouldHighlightRow = ActionKey("TableViewShouldHighlightRow")
-    public static let shouldShowMenuForRow = ActionKey("TableViewShouldShowMenuForRow")
-    public static let didEndEditingRow = ActionKey("TableViewDidEndEditingRow")
-    public static let accessoryButtonTapped = ActionKey("TableViewAccessoryButtonTapped")
-    public static let titleForDeleteConfirmationButton = ActionKey("TableViewTitleForDeleteConfirmationButton")
-    public static let canFocusRow = ActionKey("TableViewCanFocusRow")
-    public static let willBeginEditingRow = ActionKey("TableViewWillBeginEditingRow")
-    public static let willSelectRow = ActionKey("TableViewWillSelectRow")
-    public static let willDeselectRow = ActionKey("TableViewWillDeselectRow")
-    public static let indentationLevelForRow = ActionKey("TableViewIndentationLevelForRow")
-    public static let shouldIndentWhileEditingRow = ActionKey("TableViewShouldIndentWhileEditingRow")
-    public static let canDelete = ActionKey("TableViewCanDelete")
-    public static let canMoveTo = ActionKey("TableViewCanMoveTo")
-    public static let height = ActionKey("TableViewHeight")
+public extension TableActionKey {
+    public static let didSelectRow = TableActionKey("TableViewDidSelected")
+    public static let didDeselectRow = TableActionKey("TableViewDidDeselected")
+    public static let didHighlightRow = TableActionKey("TableViewDidHightlight")
+    public static let didUnhighlightRow = TableActionKey("TableViewDidUnhightlight")
+    public static let willDisplayCell = TableActionKey("TableViewWillDisplayCell")
+    public static let didEndDisplayingCell = TableActionKey("TableViewDidendDisplayingCell")
+    public static let shouldHighlightRow = TableActionKey("TableViewShouldHighlightRow")
+    public static let shouldShowMenuForRow = TableActionKey("TableViewShouldShowMenuForRow")
+    public static let didEndEditingRow = TableActionKey("TableViewDidEndEditingRow")
+    public static let accessoryButtonTapped = TableActionKey("TableViewAccessoryButtonTapped")
+    public static let titleForDeleteConfirmationButton = TableActionKey("TableViewTitleForDeleteConfirmationButton")
+    public static let canFocusRow = TableActionKey("TableViewCanFocusRow")
+    public static let willBeginEditingRow = TableActionKey("TableViewWillBeginEditingRow")
+    public static let willSelectRow = TableActionKey("TableViewWillSelectRow")
+    public static let willDeselectRow = TableActionKey("TableViewWillDeselectRow")
+    public static let indentationLevelForRow = TableActionKey("TableViewIndentationLevelForRow")
+    public static let shouldIndentWhileEditingRow = TableActionKey("TableViewShouldIndentWhileEditingRow")
+    public static let canDelete = TableActionKey("TableViewCanDelete")
+    public static let canMoveTo = TableActionKey("TableViewCanMoveTo")
+    public static let height = TableActionKey("TableViewHeight")
 }
 
 public extension TableViewUserInfoKeys {
-    public static let CellCanMoveProposedIndexPath = ActionKey("TableViewCellCanMoveProposedIndexPath")
+    public static let CellCanMoveProposedIndexPath = TableActionKey("TableViewCellCanMoveProposedIndexPath")
 }
 
 extension TableDirector: UITableViewDelegate {

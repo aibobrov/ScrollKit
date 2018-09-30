@@ -30,3 +30,17 @@ public extension Configurable where Self: UITableViewCell {
         return nil
     }
 }
+
+public extension Configurable where Self: UICollectionViewCell {
+    static var reuseIdentifier: String {
+        return String(describing: Self.self)
+    }
+
+    static var estimatedHeight: CGFloat? {
+        return nil
+    }
+
+    static var defaultHeight: CGFloat? {
+        return nil
+    }
+}

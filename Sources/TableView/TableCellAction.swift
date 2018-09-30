@@ -7,17 +7,17 @@
 
 import Foundation
 
-class TableCellAction {
+public class TableCellAction {
     let cell: UITableViewCell
-    let key: ActionKey
+    let key: TableActionKey
     let userInfo: [AnyHashable: Any]?
     public init(key: String, sender: UITableViewCell, userInfo: [AnyHashable: Any]? = nil) {
-        self.key = ActionKey(rawValue: key)
+        self.key = TableActionKey(rawValue: key)
         cell = sender
         self.userInfo = userInfo
     }
 
-    public init(key: ActionKey, sender: UITableViewCell, userInfo: [AnyHashable: Any]? = nil) {
+    public init(key: TableActionKey, sender: UITableViewCell, userInfo: [AnyHashable: Any]? = nil) {
         self.key = key
         cell = sender
         self.userInfo = userInfo

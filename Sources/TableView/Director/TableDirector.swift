@@ -8,7 +8,13 @@
 import Foundation
 
 open class TableDirector: NSObject {
-    public weak var tableView: UITableView?
+    public weak var tableView: UITableView? {
+        didSet {
+            tableView?.delegate = self
+            tableView?.dataSource = self
+        }
+    }
+
     public var sections: [TableSection] = []
 
     internal var sectionsIndexTitlesIndexes: [Int]?
@@ -20,9 +26,6 @@ open class TableDirector: NSObject {
             registrar = TableCellRegistrar(tableView: tableView)
         }
         super.init()
-
-        tableView.delegate = self
-        tableView.dataSource = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveAction(_:)), name: .TableViewCellAction, object: nil)
     }

@@ -9,7 +9,7 @@ import Foundation
 
 open class TableItemAbstract: Item, EditingActionable {
     public typealias ScrollViewCellType = UITableViewCell
-    public typealias RowActionType = ActionKey
+    public typealias RowActionType = TableActionKey
 
     open var reuseIdentifier: String { abstract() }
     open var cellType: AnyClass { abstract() }
@@ -18,8 +18,8 @@ open class TableItemAbstract: Item, EditingActionable {
 
     open func configure(_ cell: UITableViewCell) { abstract() }
     @discardableResult
-    open func invoke(action: ActionKey, cell: UITableViewCell?, indexPath: IndexPath, userInfo: [AnyHashable: Any]?) -> Any? { abstract() }
-    open func has(action: ActionKey) -> Bool { abstract() }
+    open func invoke(action: TableActionKey, cell: UITableViewCell?, indexPath: IndexPath, userInfo: [AnyHashable: Any]?) -> Any? { abstract() }
+    open func has(action: TableActionKey) -> Bool { abstract() }
 
     open internal(set) var editingActions: [UITableViewRowAction]?
     open func isEditingAllowed(for indexPath: IndexPath) -> Bool { abstract() }

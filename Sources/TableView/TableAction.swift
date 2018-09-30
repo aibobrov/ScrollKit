@@ -1,5 +1,5 @@
 //
-//  Action.swift
+//  TableAction.swift
 //  ScrollKit
 //
 //  Created by Artem Bobrov on 29/09/2018.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ActionKey: Hashable, Equatable, RawRepresentable {
+public struct TableActionKey: ActionKey {
     public let rawValue: String
 
     public init(_ rawValue: String) {
@@ -19,13 +19,13 @@ public struct ActionKey: Hashable, Equatable, RawRepresentable {
     }
 }
 
-open class ItemActionOptions<CellType: Configurable> {
+open class TableItemActionOptions<CellType: Configurable> {
     public let item: CellType.DataType
     public let cell: CellType?
     public let indexPath: IndexPath
     public let userInfo: [AnyHashable: Any]?
 
-    init(item: CellType.DataType, cell: CellType?, indexPath: IndexPath, userInfo: [AnyHashable: Any]?) {
+    public init(item: CellType.DataType, cell: CellType?, indexPath: IndexPath, userInfo: [AnyHashable: Any]?) {
         self.item = item
         self.cell = cell
         self.indexPath = indexPath
@@ -33,11 +33,11 @@ open class ItemActionOptions<CellType: Configurable> {
     }
 }
 
-private enum ItemActionHandler<CellType: Configurable> {
-    case voidAction((ItemActionOptions<CellType>) -> Void)
-    case action((ItemActionOptions<CellType>) -> Any?)
+private enum TableItemActionHandler<CellType: Configurable> {
+    case voidAction((TableItemActionOptions<CellType>) -> Void)
+    case action((TableItemActionOptions<CellType>) -> Any?)
 
-    func invoke(withOptions options: ItemActionOptions<CellType>) -> Any? {
+    func invoke(withOptions options: TableItemActionOptions<CellType>) -> Any? {
         switch self {
         case let .voidAction(handler):
             return handler(options)
@@ -47,21 +47,21 @@ private enum ItemActionHandler<CellType: Configurable> {
     }
 }
 
-open class ItemAction<CellType: Configurable> {
-    let type: ActionKey
-    private let handler: ItemActionHandler<CellType>
+open class TableItemAction<CellType: Configurable> {
+    let type: TableActionKey
+    private let handler: TableItemActionHandler<CellType>
 
-    init(_ type: ActionKey, handler: @escaping (ItemActionOptions<CellType>) -> Void) {
+    init(_ type: TableActionKey, handler: @escaping (TableItemActionOptions<CellType>) -> Void) {
         self.handler = .voidAction(handler)
         self.type = type
     }
 
-    init(_ type: ActionKey, handler: @escaping (ItemActionOptions<CellType>) -> Any?) {
+    init(_ type: TableActionKey, handler: @escaping (TableItemActionOptions<CellType>) -> Any?) {
         self.handler = .action(handler)
         self.type = type
     }
 
     public func invoke(on cell: UITableViewCell?, item: CellType.DataType, indexPath: IndexPath, userInfo: [AnyHashable: Any]? = nil) -> Any? {
-        return handler.invoke(withOptions: ItemActionOptions<CellType>(item: item, cell: cell as? CellType, indexPath: indexPath, userInfo: userInfo))
+        return handler.invoke(withOptions: TableItemActionOptions<CellType>(item: item, cell: cell as? CellType, indexPath: indexPath, userInfo: userInfo))
     }
 }
