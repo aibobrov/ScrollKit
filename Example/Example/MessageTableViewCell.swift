@@ -8,6 +8,10 @@
 import ScrollKit
 import UIKit
 
+extension TableActionKey {
+	static let tapped = TableActionKey("tapped")
+}
+
 class MessageTableViewCell: UITableViewCell, Configurable {
     let messageLabel: UILabel = {
         let label = UILabel()
@@ -27,6 +31,7 @@ class MessageTableViewCell: UITableViewCell, Configurable {
 
     var leadingConstraint: NSLayoutConstraint!
     var trailingConstraint: NSLayoutConstraint!
+	private lazy var tapAction = TableCellAction(key: .tapped, sender: self)
 
     func configure(with message: Message) {
         backgroundBubbleView.backgroundColor = message.isIncoming ? .white : .blue
@@ -61,7 +66,13 @@ class MessageTableViewCell: UITableViewCell, Configurable {
 
         trailingConstraint = backgroundBubbleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -const)
         trailingConstraint.isActive = true
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
+		backgroundBubbleView.addGestureRecognizer(tapGesture)
     }
+
+	@objc private func tapped(_ recognizer: UITapGestureRecognizer) {
+		tapAction.invoke()
+	}
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

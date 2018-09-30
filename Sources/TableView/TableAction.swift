@@ -48,15 +48,15 @@ private enum TableItemActionHandler<CellType: Configurable> {
 }
 
 open class TableItemAction<CellType: Configurable> {
-    let type: TableActionKey
+    public let type: TableActionKey
     private let handler: TableItemActionHandler<CellType>
 
-    init(_ type: TableActionKey, handler: @escaping (TableItemActionOptions<CellType>) -> Void) {
+    public init(_ type: TableActionKey, handler: @escaping (TableItemActionOptions<CellType>) -> Void) {
         self.handler = .voidAction(handler)
         self.type = type
     }
 
-    init(_ type: TableActionKey, handler: @escaping (TableItemActionOptions<CellType>) -> Any?) {
+    public init(_ type: TableActionKey, handler: @escaping (TableItemActionOptions<CellType>) -> Any?) {
         self.handler = .action(handler)
         self.type = type
     }

@@ -34,13 +34,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		let action = TableItemAction<MessageTableViewCell>(.tapped) { [unowned self] options in
+			let alert = UIAlertController(title: "Action", message: "Tapped on \(options.indexPath)", preferredStyle: .alert)
+			self.present(alert, animated: true, completion: {
+				DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(1), execute: {
+					alert.dismiss(animated: true, completion: nil)
+				})
+			})
+		}
         let sections: [TableSection] = {
             let data = Dictionary(grouping: messages, by: { $0.date })
             let messagesSection = data.keys.sorted().map { data[$0]! }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy"
             return messagesSection.map { messages -> TableSection in
-                let section = TableSection(items: messages.map { TableItem<MessageTableViewCell>(item: $0) })
+				let section = TableSection(items: messages.map { TableItem<MessageTableViewCell>(item: $0, actions: [action]) })
                 section.headerHeight = 50
                 section.headerFactory = { tv, index in
                     let dateString = dateFormatter.string(from: messages.first!.date)
@@ -63,5 +71,7 @@ class ViewController: UIViewController {
         _tableDirector
             .append(sections: sections)
             .reload()
+
+
     }
 }
