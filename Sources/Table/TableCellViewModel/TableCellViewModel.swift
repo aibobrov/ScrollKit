@@ -3,7 +3,14 @@ import UIKit
 public protocol TableCellViewModel: CellViewModelSelectable, CellViewModelHeightable {
     associatedtype CellType: UITableViewCell
 
+    /// Method to setup cell.
+    ///
+    /// - Parameter cell: Cell instance.
     func configure(cell: CellType)
+
+    /// Method indicated that cell has been selected.
+    ///
+    /// - Parameter cell: Cell instance.
     func didSelect(cell: CellType)
 }
 

@@ -1,4 +1,6 @@
+/// Protocol representing a reusable element.
 public protocol Reusable: AnyObject {
+    /// Reuse identifier.
     static var identifier: String { get }
 }
 
