@@ -12,17 +12,10 @@
 ## Introduction
 
 ScrollKit is a library to manage your UICollectionView and UITableView data.
-Heavily inspired by [TableKit](https://github.com/maxsokolov/TableKit.git).
 
 ## Usage
 
-```swift
-import ScrollKit
-
-let director = TableDirector(tableView: tableView)
-let rows = elements.map { TableRows<MyTableViewCell>(item: $0) }
-director.append(rows: rows).reload()
-```
+Look at pagination example.
 
 ## Requirements
 
