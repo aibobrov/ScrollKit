@@ -3,6 +3,8 @@ import UIKit
 open class TableManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     open weak var tableView: UITableView? {
         didSet {
+			tableView?
+				.dataSource?.tableView(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
             tableView?.dataSource = self
             tableView?.delegate = self
         }
