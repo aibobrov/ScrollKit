@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ScrollKit"
-  s.version          = "0.9.1"
+  s.version          = "0.9.5"
   s.summary          = "Easily manage your collection view and table view data."
   s.homepage         = "https://github.com/artbobrov/ScrollKit"
   s.license          = { type: 'MIT', file: 'LICENSE' }
