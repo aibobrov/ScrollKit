@@ -10,22 +10,22 @@ open class FoldTableSection: TableSection {
         super.init([main], header: nil, footer: nil)
     }
 
-	@discardableResult
-    func didChangeFold(to newState: FoldState) -> TableDiff? {
-		defer {
-			main.didChangeFold(to: newState)
-		}
+    @discardableResult
+    func didChangeFold(to newState: FoldState) -> Difference? {
+        defer {
+            main.didChangeFold(to: newState)
+        }
         switch newState {
         case .open:
             items = [main] + details
-			return TableDiff(deleted: nil, inserted: Array(1..<items.count))
+            return TableDiff(inserted: Array(1 ..< items.count))
         case .close:
-			defer {
-				items = [main]
-			}
-			return TableDiff(deleted: Array(1..<items.count), inserted: nil)
+            defer {
+                items = [main]
+            }
+            return TableDiff(deleted: Array(1 ..< items.count))
         case .unavailable:
-			return nil
+            return nil
         }
     }
 

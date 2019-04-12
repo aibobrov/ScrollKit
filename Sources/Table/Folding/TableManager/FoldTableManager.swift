@@ -6,7 +6,7 @@ open class FoldTableManager: TableManager {
 
         if let viewModel = data[indexPath.section] as? FoldTableSection {
             let diff = viewModel.didChangeFold(to: viewModel.state.next)
-			diff?.apply(for: indexPath.section, tableView: tableView)
+            diff?.apply(for: indexPath.section, tableView: tableView)
         }
     }
 }

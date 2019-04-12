@@ -13,16 +13,33 @@ open class TableSection {
         self.footer = footer
     }
 
-    open func append(_ element: Element) {
-        items.append(element)
+    @discardableResult
+    open func removeLastItemWithDiff() -> Difference {
+        items.removeLast()
+        return TableDiff(deleted: [items.count])
     }
 
-    open func append<S>(contentsOf newElements: S) where Element == S.Element, S: Sequence {
-        items.append(contentsOf: newElements)
+    @discardableResult
+    open func append(_ element: Element) -> Difference {
+        defer {
+            items.append(element)
+        }
+        return TableDiff(inserted: Array(items.count ..< items.count + 1))
+    }
+
+    @discardableResult
+    open func append<S>(contentsOf newElements: S) -> Difference
+        where Element == S.Element, S: Sequence {
+        defer {
+            items.append(contentsOf: newElements)
+        }
+        return TableDiff(
+            inserted: Array(items.count ..< items.count + newElements.underestimatedCount)
+        )
     }
 }
 
-extension TableSection: RandomAccessCollection, MutableCollection {
+extension TableSection: RandomAccessCollection, Collection {
     public typealias Index = Items.Index
     public typealias Element = Items.Element
 

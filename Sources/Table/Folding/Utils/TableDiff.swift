@@ -1,17 +1,23 @@
-public struct TableDiff {
-	public let deleted: [Int]?
-	public let inserted: [Int]?
+public struct TableDiff: Difference {
+    public static var identity: TableDiff {
+        return TableDiff(deleted: nil, inserted: nil, reloaded: nil)
+    }
 
-	public func apply(for section: Int,
-					  tableView: UITableView) {
-		tableView.beginUpdates()
-		if let inserted = self.inserted?.map({ IndexPath(item: $0, section: section) }) {
-			tableView.insertRows(at: inserted, with: .bottom)
-		}
+    public let deleted: [Int]?
+    public let inserted: [Int]?
+    public let reloaded: [Int]?
 
-		if let deleted = self.deleted?.map({ IndexPath(item: $0, section: section) }) {
-			tableView.deleteRows(at: deleted, with: .top)
-		}
-		tableView.endUpdates()
-	}
+    public init(deleted: [Int]? = nil,
+                inserted: [Int]? = nil,
+                reloaded: [Int]? = nil) {
+        self.deleted = deleted
+        self.inserted = inserted
+        self.reloaded = reloaded
+    }
+
+    public func combined(with diff: Difference) -> TableDiff {
+        return TableDiff(deleted: (deleted ?? []) + (diff.deleted ?? []),
+                         inserted: (inserted ?? []) + (diff.inserted ?? []),
+                         reloaded: (reloaded ?? []) + (diff.reloaded ?? []))
+    }
 }

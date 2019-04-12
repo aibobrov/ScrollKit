@@ -28,6 +28,7 @@
 		A15325312261306200EB2DA3 /* TableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15325212261306200EB2DA3 /* TableCellViewModel.swift */; };
 		A15325712261399F00EB2DA3 /* FoldTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15325702261399F00EB2DA3 /* FoldTableSection.swift */; };
 		A1532573226148AC00EB2DA3 /* TableDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1532572226148AC00EB2DA3 /* TableDiff.swift */; };
+		A1532578226153F600EB2DA3 /* Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1532577226153F500EB2DA3 /* Difference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +65,8 @@
 		A153251F2261306200EB2DA3 /* TableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
 		A15325212261306200EB2DA3 /* TableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellViewModel.swift; sourceTree = "<group>"; };
 		A15325702261399F00EB2DA3 /* FoldTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTableSection.swift; sourceTree = "<group>"; };
-		A1532572226148AC00EB2DA3 /* TableDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDiff.swift; sourceTree = "<group>"; };
+		A1532572226148AC00EB2DA3 /* TableDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableDiff.swift; path = ../../Table/Folding/Utils/TableDiff.swift; sourceTree = "<group>"; };
+		A1532577226153F500EB2DA3 /* Difference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difference.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		A153251C2261306200EB2DA3 /* TableManager */ = {
 			isa = PBXGroup;
 			children = (
+				A1532576226153E900EB2DA3 /* Difference */,
 				A153251D2261306200EB2DA3 /* TableSection.swift */,
 				A153251E2261306200EB2DA3 /* TableData.swift */,
 				A153251F2261306200EB2DA3 /* TableManager.swift */,
@@ -231,9 +234,18 @@
 			isa = PBXGroup;
 			children = (
 				A15325702261399F00EB2DA3 /* FoldTableSection.swift */,
-				A1532572226148AC00EB2DA3 /* TableDiff.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A1532576226153E900EB2DA3 /* Difference */ = {
+			isa = PBXGroup;
+			children = (
+				A1532572226148AC00EB2DA3 /* TableDiff.swift */,
+				A1532577226153F500EB2DA3 /* Difference.swift */,
+			);
+			name = Difference;
+			path = ../../../Base/Difference;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +372,7 @@
 				A15325292261306200EB2DA3 /* FoldCellViewModel.swift in Sources */,
 				A15325252261306200EB2DA3 /* CellViewModel.swift in Sources */,
 				A15325222261306200EB2DA3 /* CellViewModelHeightable.swift in Sources */,
+				A1532578226153F600EB2DA3 /* Difference.swift in Sources */,
 				A15325272261306200EB2DA3 /* FoldTableManager.swift in Sources */,
 				A15325282261306200EB2DA3 /* FoldState.swift in Sources */,
 				A153252C2261306200EB2DA3 /* UITableViewCell+Reusable.swift in Sources */,

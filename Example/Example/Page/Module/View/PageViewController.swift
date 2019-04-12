@@ -32,17 +32,25 @@ class PageViewController: UIViewController {
     }
 
     private func showNewPage(with items: [CellViewModel]) {
+        var removed: Difference = TableDiff.identity
         if tableManager[.main].isEmpty == false {
-            tableManager[.main].items.removeLast()
+            removed = tableManager[.main].removeLastItemWithDiff()
         }
-        tableManager[.main].append(contentsOf: items)
-
-        tableManager.reloadData()
+        let diff = tableManager[.main]
+            .append(contentsOf: items)
+            .combined(with: removed)
+        diff.apply(for: PageSection.main.rawValue, tableView: tableView)
     }
 }
 
 enum PageSection: Int {
     case main = 0
+}
+
+private extension Difference {
+    func apply(for section: PageSection, tableView: UITableView?) {
+        apply(for: section.rawValue, tableView: tableView)
+    }
 }
 
 private extension PageTableManager {
