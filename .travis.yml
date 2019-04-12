@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode9
+osx_image: xcode10
 env:
 - DESTINATION="OS=11.0,name=iPhone 7" SCHEME="ScrollKit" SDK=iphonesimulator
 
