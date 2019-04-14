@@ -24,7 +24,6 @@
 		A15325612261308100EB2DA3 /* MainPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153254E2261308100EB2DA3 /* MainPageCell.swift */; };
 		A15325622261308100EB2DA3 /* LoaderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153254F2261308100EB2DA3 /* LoaderPage.swift */; };
 		A15325632261308100EB2DA3 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15325502261308100EB2DA3 /* PageViewController.swift */; };
-		A15325642261308100EB2DA3 /* PageTableManager+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15325522261308100EB2DA3 /* PageTableManager+Section.swift */; };
 		A15325672261317B00EB2DA3 /* Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15325662261317B00EB2DA3 /* Fold.swift */; };
 		A15325692261327700EB2DA3 /* DetailFoldCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15325682261327700EB2DA3 /* DetailFoldCellViewModel.swift */; };
 		A153256B226132C900EB2DA3 /* DetailFoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153256A226132C900EB2DA3 /* DetailFoldCell.swift */; };
@@ -101,7 +100,6 @@
 		A153254E2261308100EB2DA3 /* MainPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageCell.swift; sourceTree = "<group>"; };
 		A153254F2261308100EB2DA3 /* LoaderPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderPage.swift; sourceTree = "<group>"; };
 		A15325502261308100EB2DA3 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		A15325522261308100EB2DA3 /* PageTableManager+Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageTableManager+Section.swift"; sourceTree = "<group>"; };
 		A15325662261317B00EB2DA3 /* Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fold.swift; sourceTree = "<group>"; };
 		A15325682261327700EB2DA3 /* DetailFoldCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoldCellViewModel.swift; sourceTree = "<group>"; };
 		A153256A226132C900EB2DA3 /* DetailFoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoldCell.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				A15325422261308100EB2DA3 /* Module */,
-				A15325512261308100EB2DA3 /* PageTableManager */,
 			);
 			name = Page;
 			path = Example/Page;
@@ -297,14 +294,6 @@
 				A153254F2261308100EB2DA3 /* LoaderPage.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		A15325512261308100EB2DA3 /* PageTableManager */ = {
-			isa = PBXGroup;
-			children = (
-				A15325522261308100EB2DA3 /* PageTableManager+Section.swift */,
-			);
-			path = PageTableManager;
 			sourceTree = "<group>";
 		};
 		A15325652261316700EB2DA3 /* Model */ = {
@@ -384,6 +373,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -463,7 +453,6 @@
 				A15325692261327700EB2DA3 /* DetailFoldCellViewModel.swift in Sources */,
 				A15325582261308100EB2DA3 /* FoldViewController.swift in Sources */,
 				A153255D2261308100EB2DA3 /* PageViewModel.swift in Sources */,
-				A15325642261308100EB2DA3 /* PageTableManager+Section.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,6 @@ import UIKit
 class DetailFoldCell: UITableViewCell {
     let label: UILabel = {
         let label = UILabel()
-        label.text = "Detail"
         return label
     }()
 

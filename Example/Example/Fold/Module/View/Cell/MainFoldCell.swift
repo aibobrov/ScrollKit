@@ -4,7 +4,6 @@ final class MainFoldCell: UITableViewCell {
     let label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.text = "Main"
         return label
     }()
 

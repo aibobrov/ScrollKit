@@ -58,7 +58,7 @@ public extension TableCellViewModel {
         if let cell = view as? CellType {
             willDisplay(cell: cell)
         } else {
-            assertionFailure()
+            assertionFailure("Unvalid view type")
         }
     }
 }

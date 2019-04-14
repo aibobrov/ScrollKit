@@ -14,6 +14,9 @@ open class FoldTableSection: TableSection {
     func didChangeFold(to newState: FoldState) -> Difference? {
         defer {
             main.didChangeFold(to: newState)
+            details
+                .compactMap { $0 as? FoldCellViewModel }
+                .forEach { $0.didChangeFold(to: newState) }
         }
         switch newState {
         case .open:
