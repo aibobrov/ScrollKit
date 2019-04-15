@@ -12,11 +12,11 @@ public extension Difference {
     func apply(for section: Int, tableView: UITableView?) {
         tableView?.beginUpdates()
         if let inserted = self.inserted?.map({ IndexPath(item: $0, section: section) }) {
-            tableView?.insertRows(at: inserted, with: .automatic)
+            tableView?.insertRows(at: inserted, with: .top)
         }
 
         if let deleted = self.deleted?.map({ IndexPath(item: $0, section: section) }) {
-            tableView?.deleteRows(at: deleted, with: .automatic)
+            tableView?.deleteRows(at: deleted, with: .bottom)
         }
 
         if let reloaded = self.reloaded?.map({ IndexPath(item: $0, section: section) }) {
