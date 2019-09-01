@@ -1,6 +1,6 @@
 import ScrollKit
 
-final class MainPageCellViewModel: TableCellViewModel {
+final class MainPageCellViewModel: TableCellViewModel, CellViewModelHeightable {
     let data: Data
 
     init(data: Data) {
@@ -12,6 +12,6 @@ final class MainPageCellViewModel: TableCellViewModel {
     }
 
     var height: CGFloat? {
-        return 40
+        return 70
     }
 }
